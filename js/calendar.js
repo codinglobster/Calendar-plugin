@@ -21,6 +21,19 @@ $.datepicker.regional['zh-CN'] = {
 };
 $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 //------------------------汉化结束-------------------------------------
+//-------------------------重写今天方法--------------------------------
+$.datepicker._gotoToday = function(e) {
+    var i, s = t(e), n = this._getInst(s[0]);
+    this._get(n, "gotoCurrent") && n.currentDay ? (n.selectedDay = n.currentDay,
+        n.drawMonth = n.selectedMonth = n.currentMonth,
+        n.drawYear = n.selectedYear = n.currentYear) : (i = new Date,
+        n.selectedDay = i.getDate(),
+        n.drawMonth = n.selectedMonth = i.getMonth(),
+        n.drawYear = n.selectedYear = i.getFullYear()),
+        this._notifyChange(n),
+        this._adjustDate(s)
+}
+
 var headerHtml = $("#material-header-holder .ui-datepicker-material-header");
 
 var changeMaterialHeader = function(header, date) {
@@ -64,16 +77,21 @@ $("input[data-type='date']").on("focus", function() {
     //$(this).datepicker._selectDate(this, date);
 });
 
-$("input[data-type='date']").datepicker({
+var datepickers = $("input[data-type='date']").datepicker({
     showButtonPanel: true,
     closeText: '确定',
     defaultDate: new Date(),
     onSelect: function(date, inst) {
         changeMaterialHeader(headerHtml, moment(date, 'YYYY-MM-DD'));
-    },
+    }
 });
-
+console.log(datepickers);
 changeMaterialHeader(headerHtml, moment());
 $('input').datepicker('show');
+$(".ui-state-highlight").addClass("ui-state-active");
 
 //汉化
+
+/**
+ *
+ */
