@@ -23,30 +23,25 @@ $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 //------------------------汉化结束-------------------------------------
 //-------------------------重写今天方法--------------------------------
 $.datepicker._gotoToday = function(e) {
-    var i, s = t(e), n = this._getInst(s[0]);
-    this._get(n, "gotoCurrent") && n.currentDay ? (n.selectedDay = n.currentDay,
-        n.drawMonth = n.selectedMonth = n.currentMonth,
-        n.drawYear = n.selectedYear = n.currentYear) : (i = new Date,
-        n.selectedDay = i.getDate(),
-        n.drawMonth = n.selectedMonth = i.getMonth(),
-        n.drawYear = n.selectedYear = i.getFullYear()),
-        this._notifyChange(n),
-        this._adjustDate(s)
+    $('#destDiv').datepicker( "setDate", new Date());
+    changeMaterialHeader(headerHtml, moment());
+    $(".ui-datepicker").prepend(headerHtml);
+}
+$.datepicker._hideDatepicker = function(e) {
+
 }
 
 var headerHtml = $("#material-header-holder .ui-datepicker-material-header");
 
 var changeMaterialHeader = function(header, date) {
-    console.log(date)
     var year   = date.format('YYYY');
-    console.log(year)
     var month  = date.format('MMM');
     var dayNum = date.format('D');
     var isoDay = date.isoWeekday();
 
-    var weekday = [ '星期一', '星期二', '星期三', '星期四', '星期五', '星期六','星期日'];
+    var weekday = [ '星期日','星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 
-    $('.ui-datepicker-material-day', header).text(weekday[isoDay]);
+    $('.ui-datepicker-material-day', header).text(weekday[isoDay]);//在header中查询day
     $('.ui-datepicker-material-year', header).text(year);
     $('.ui-datepicker-material-month', header).text(month);
     $('.ui-datepicker-material-day-num', header).text(dayNum);
@@ -60,24 +55,11 @@ $.datepicker._selectDate = function(id, dateStr) {
     $.datepicker._selectDateOverload(id, dateStr);
     inst.inline = false;
     this._updateDatepicker(inst);
-
     headerHtml.remove();
     $(".ui-datepicker").prepend(headerHtml);
 };
 
-$("input[data-type='date']").on("focus", function() {
-    //var date;
-    //if (this.value == "") {
-    //  date = moment();
-    //} else {
-    //  date = moment(this.value, 'MM/DD/YYYY');
-    //}
-
-    $(".ui-datepicker").prepend(headerHtml);
-    //$(this).datepicker._selectDate(this, date);
-});
-
-var datepickers = $("input[data-type='date']").datepicker({
+var datepickers = $('#destDiv').datepicker({
     showButtonPanel: true,
     closeText: '确定',
     defaultDate: new Date(),
@@ -85,13 +67,12 @@ var datepickers = $("input[data-type='date']").datepicker({
         changeMaterialHeader(headerHtml, moment(date, 'YYYY-MM-DD'));
     }
 });
-console.log(datepickers);
-changeMaterialHeader(headerHtml, moment());
-$('input').datepicker('show');
+
 $(".ui-state-highlight").addClass("ui-state-active");
+changeMaterialHeader(headerHtml, moment());//初始化顶部数据
+$(".ui-datepicker").prepend(headerHtml);//将html插入头部，使样式能够生效
+$('#destDiv').datepicker('show');//显示选择器
 
-//汉化
-
-/**
- *
- */
+//$('#destDiv').on("focus", function() {
+//     $(".ui-datepicker").prepend(headerHtml);
+// });
