@@ -1,0 +1,16 @@
+{
+  "name": "calendar-j",
+  "version": "1.0.0",
+  "description": "calendar-plugin for pa",
+  "main": "index.js",
+  "dependencies": {
+    "bourbon": "^4.3.4",
+    "jQuery": "^1.7.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeff",
+  "license": "MIT"
+}
