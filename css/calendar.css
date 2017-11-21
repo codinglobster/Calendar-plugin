@@ -93,4 +93,57 @@
     .ui-datepicker-buttonpane .ui-datepicker-current:hover {
       background: #b4cbe5; }
 
+#destDiv {
+  float: left;
+  margin: 20px; }
+
+.text-content {
+  float: left;
+  margin: 20px;
+  height: 629px;
+  width: 682.5px;
+  box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24); }
+  .text-content .text-content-show {
+    float: left;
+    width: 92.5%; }
+    .text-content .text-content-show .text-content-each {
+      margin-top: 2%; }
+      .text-content .text-content-show .text-content-each .text-content-title {
+        display: inline-block;
+        height: 1.5rem;
+        border: 0 solid #1F3A58;
+        border-left-width: 1rem;
+        margin-top: 1rem;
+        padding: 10px;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        color: #1F3A58;
+        align-items: center; }
+        .text-content .text-content-show .text-content-each .text-content-title img {
+          width: 1.5rem; }
+      .text-content .text-content-show .text-content-each .text-content-box {
+        padding: 0 2.5% 0 5%; }
+        .text-content .text-content-show .text-content-each .text-content-box .text-content-content {
+          text-indent: 5%;
+          padding: 2.5% 5%; }
+        .text-content .text-content-show .text-content-each .text-content-box .text-content-bottom {
+          text-align: right; }
+          .text-content .text-content-show .text-content-each .text-content-box .text-content-bottom.time {
+            color: #999999; }
+          .text-content .text-content-show .text-content-each .text-content-box .text-content-bottom.name {
+            font-size: 1.25rem;
+            color: #284B72; }
+  .text-content .text-content-control {
+    float: left;
+    width: 7.5%;
+    height: 100%;
+    padding: 33% 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-align: center; }
+    .text-content .text-content-control .control-panel {
+      display: inline-block; }
+      .text-content .text-content-control .control-panel .now {
+        color: #999999; }
+
 /*# sourceMappingURL=calendar.css.map */
