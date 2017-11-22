@@ -73,6 +73,14 @@ changeMaterialHeader(headerHtml, moment());//初始化顶部数据
 $(".ui-datepicker").prepend(headerHtml);//将html插入头部，使样式能够生效
 $('#destDiv').datepicker('show');//显示选择器
 
+$(".content-img").on('click',function(e){
+    var parentDiv = $(this).parents('.text-content');
+    parentDiv.toggleClass('inverse');
+})
+$(".turn-back").on('click',function(e){
+    var parentDiv = $(this).parents('.text-content');
+    parentDiv.toggleClass('inverse');
+})
 //$('#destDiv').on("focus", function() {
 //     $(".ui-datepicker").prepend(headerHtml);
 // });

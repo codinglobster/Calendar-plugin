@@ -102,7 +102,12 @@
   margin: 20px;
   height: 629px;
   width: 682.5px;
-  box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24); }
+  box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24);
+  transform-origin: 0 50% 0;
+  transform-style: preserve-3d;
+  transition: transform .6s ease-in-out,left .6s ease-in-out,top .6s ease-in-out; }
+  .text-content.inverse {
+    transform: perspective(1800px) translate(669px) rotateY(180deg); }
   .text-content .text-content-show {
     float: left;
     width: 92.5%; }
@@ -137,13 +142,67 @@
     float: left;
     width: 7.5%;
     height: 100%;
-    padding: 33% 0;
     font-size: 1.25rem;
     font-weight: 500;
     text-align: center; }
     .text-content .text-content-control .control-panel {
-      display: inline-block; }
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%); }
       .text-content .text-content-control .control-panel .now {
         color: #999999; }
+  .text-content .text-content-back {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px 20px 20px 0;
+    color: #284B72;
+    box-sizing: border-box;
+    transform: rotateY(180deg) translateZ(1px);
+    backface-visibility: hidden; }
+    .text-content .text-content-back .title {
+      height: 1.5rem;
+      line-height: 1.5rem;
+      border: 0 solid #1F3A58;
+      border-left-width: 1rem;
+      font-size: 1.5rem;
+      align-items: center;
+      padding: 10px; }
+      .text-content .text-content-back .title a {
+        float: right;
+        text-decoration: none;
+        color: #212121; }
+    .text-content .text-content-back .pic-box {
+      position: relative; }
+      .text-content .text-content-back .pic-box .main-picture {
+        height: 450px;
+        width: 450px;
+        padding: 40px;
+        float: left;
+        text-align: center; }
+        .text-content .text-content-back .pic-box .main-picture img {
+          display: inline-block;
+          height: inherit;
+          box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.24); }
+      .text-content .text-content-back .pic-box .picture-list {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0 10px; }
+        .text-content .text-content-back .pic-box .picture-list img {
+          box-sizing: border-box;
+          height: 75px; }
+          .text-content .text-content-back .pic-box .picture-list img.inactive {
+            filter: grayscale(10%); }
+          .text-content .text-content-back .pic-box .picture-list img.active {
+            border: 0 solid #2b4772;
+            border-right-width: 0.5rem;
+            transform: translateX(-0.75rem); }
+      .text-content .text-content-back .pic-box .clear {
+        clear: both; }
 
 /*# sourceMappingURL=calendar.css.map */
